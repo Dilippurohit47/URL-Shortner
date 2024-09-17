@@ -5,18 +5,21 @@ import { getUser } from "./db/apiAuth";
 const urlContext = createContext();
 
 const urlProvider = ({ children }) => {
+  const { data: user,  fn:fetchUser ,loading} = useFetch(getUser);
 
-  const {data:user,loading, fn:fetchUser}  = useFetch(getUser)
+  const isAuthenticated = user?.role === "authenticated";
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
-  const isAuthenticated = user?.role === "authenticated"
-  useEffect(() =>{
-    fetchUser()
-  },[])
-
-  return <urlContext.Provider value={{user,fetchUser,loading,isAuthenticated}}>{children}</urlContext.Provider>;
+  return (
+    <urlContext.Provider value={{ user, fetchUser, loading, isAuthenticated }}>
+      {children}
+    </urlContext.Provider>
+  );
 };
 
-export const urlState =()=>{
-    return useContext(urlContext)
-}
-export default urlProvider
+export const urlState = () => {
+  return useContext(urlContext);
+};
+export default urlProvider;

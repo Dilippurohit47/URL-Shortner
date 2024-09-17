@@ -1,50 +1,47 @@
-import React from 'react'
-import { Button } from './components/ui/button'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import AppLayout from './layouts/app-layout'
-import HomePage from './pages/HomePage'
-import Dashboard from './pages/dashboard'
-import Auth from './pages/auth'
-import Link from './pages/link'
-import RedirectLink from './pages/redirectLink'
-import urlProvider from './context'
+import React from "react";
+import { Button } from "./components/ui/button";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AppLayout from "./layouts/app-layout";
+import HomePage from "./pages/HomePage";
+import Dashboard from "./pages/dashboard";
+import Auth from "./pages/auth";
+import Link from "./pages/link";
+import RedirectLink from "./pages/redirectLink";
+import UrlProvider from "./context"
 
-const router  = createBrowserRouter([
-
+const router = createBrowserRouter([
   {
-    element:<AppLayout/>,
-    children:[
+    element: <AppLayout />,
+    children: [
       {
-        path: '/',
-        element: <HomePage/>
+        path: "/",
+        element: <HomePage />,
       },
       {
-        path: '/dashboard',
-        element: <Dashboard/>
+        path: "/dashboard",
+        element: <Dashboard />,
       },
       {
-        path: '/auth',
-        element: <Auth/>
+        path: "/auth",
+        element: <Auth />,
       },
       {
-        path: '/link/:id',
-        element: <Link/>
+        path: "/link/:id",
+        element: <Link />,
       },
       {
-        path: '/:id',
-        element: <RedirectLink/>
+        path: "/:id",
+        element: <RedirectLink />,
       },
-    ]
-  }
-
-])
+    ],
+  },
+]);
 const App = () => {
   return (
-    <urlProvider>
-   <RouterProvider router={router} />
+    <UrlProvider>
+      <RouterProvider router={router} />
+    </UrlProvider>
+  );
+};
 
-    </urlProvider>
-  )
-}
-
-export default App
+export default App;
