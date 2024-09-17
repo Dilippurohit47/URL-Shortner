@@ -52,7 +52,7 @@ const Dashboard = () => {
   const filterUrls = urls?.filter((url) =>
     url?.title?.toLowerCase().includes(searchQuery?.toLowerCase())
   );
-console.log(urls)
+  console.log(urls);
   return (
     <div className="flex flex-col gap-8 pl-20">
       {(loading || loadingClicks) && <BarLoader width={"100%"} color="blue" />}
@@ -88,11 +88,13 @@ console.log(urls)
         />
         <Filter className="absolute top-2 right-2 p-1" />
       </div>
-{
-  (filterUrls || []).map((url,i) =>{
-    return <LinkCard fetchUrls={fnUrls} key={i}  url={url}/>
-  })
-}
+      {searchQuery
+        ? (filterUrls || []).map((url, i) => {
+            return <LinkCard fetchUrls={fnUrls} key={i} url={url} />;
+          })
+        : urls?.map((url, i) => {
+            return <LinkCard fetchUrls={fnUrls} key={i} url={url} />;
+          })}
     </div>
   );
 };
