@@ -15,7 +15,7 @@ import { Link2Icon, Link2OffIcon, LogOut } from "lucide-react";
 
 const Header = () => {
   const navigate = useNavigate();
-  const user = true;
+  const user = false;
   return (
     <nav className="py-4 px-10 flex justify-between items-center">
       <Link to="/">
