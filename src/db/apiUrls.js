@@ -2,7 +2,7 @@ import supabase from "./supabase";
 
 export const getUrls = async (user_id) => {
   const { data, error } = await supabase
-    .from("urls")
+    .from("Urls")
     .select("*")
     .eq("user_id",user_id);
 

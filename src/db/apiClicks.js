@@ -2,7 +2,7 @@ import supabase from "./supabase";
 
 export const getClicks = async (urlIds) => {
   const { data, error } = await supabase
-    .from("clicks")
+    .from("Clicks")
     .select("*")
     .in("url_id", urlIds);
 
