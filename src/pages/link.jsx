@@ -1,5 +1,5 @@
-import DeviceStats from "../components/deviceStats"
-import Location from "../components/locationStats"
+import DeviceStats from "../components/deviceStats";
+import Location from "../components/locationStats";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { urlState } from "@/context";
@@ -12,20 +12,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BarLoader, BeatLoader } from "react-spinners";
 
 const LinkPage = () => {
-  const downloadImage = () => {
-    const imageUrl = url?.qr;
-    const fileName = url?.title;
 
-    const anchor = document.createElement("a");
-    anchor.href = imageUrl;
-    anchor.download = fileName;
-
-    document.body.appendChild(anchor);
-
-    anchor.click();
-
-    document.body.removeChild(anchor);
-  };
   const navigate = useNavigate();
   const { user } = urlState();
   const { id } = useParams();
@@ -44,9 +31,27 @@ const LinkPage = () => {
 
   const { loading: loadingDelete, fn: fnDelete } = useFetch(deleteUrl, id);
 
+  
+  const downloadImage = () => {
+    const imageUrl = url?.qr;
+    const fileName = url?.title;
+
+    const anchor = document.createElement("a");
+    anchor.href = imageUrl;
+    anchor.download = fileName;
+
+    document.body.appendChild(anchor);
+
+    anchor.click();
+
+    document.body.removeChild(anchor);
+  };
+
   useEffect(() => {
     fn();
   }, []);
+
+  console.log(url?.qr)
 
   useEffect(() => {
     if (!error && loading === false) fnStats();
@@ -60,7 +65,7 @@ const LinkPage = () => {
   if (url) {
     link = url?.custom_url ? url?.custom_url : url?.short_url;
   }
-console.log(url)
+  console.log(url);
   return (
     <>
       {(loading || loadingStats) && (
@@ -76,7 +81,7 @@ console.log(url)
             target="_blank"
             className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
           >
-            https://trimrr.in/{link}
+           http://localhost:5173/{link}
           </a>
           <a
             href={url?.original_url}

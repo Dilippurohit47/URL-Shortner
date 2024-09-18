@@ -36,7 +36,7 @@ export async function createUrl(
 
   if (storageError) throw new Error(storageError.message);
 
-  const qr = `${supabaseUrl}/storage/v1/object/public/qrs/${fileName}`;
+  const qr = `${supabaseUrl}/storage/v1/object/public/Qr/${fileName}`;
 
   const { data, error } = await supabase
     .from("Urls")
