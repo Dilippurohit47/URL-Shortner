@@ -65,7 +65,7 @@ const parser = new UAParser();
 export const storeClicks = async ({ id, originalUrl }) => {
   try {
     const res = parser.getResult();
-    const deivce = res.type || "desktop";
+    const device = res.type || "desktop";
 
     const response = await fetch("https://ipapi.co/json");
     const { city, counrty_name: country } = await response.json();
@@ -74,7 +74,7 @@ export const storeClicks = async ({ id, originalUrl }) => {
       url_id: id,
       city: city,
       country: country,
-      deivce,
+      device,
     });
     window.location.href = originalUrl;
   } catch (error) {
@@ -99,12 +99,11 @@ export async function getUrl({ id, user_id }) {
 }
 
 export async function getLongUrl(id) {
-
-  let {data: shortLinkData, error: shortLinkError} = await supabase
-  .from("Urls")
-  .select("id, original_url")
-  .or(`short_url.eq.${id},custom_url.eq.${id}`)
-  .single();
+  let { data: shortLinkData, error: shortLinkError } = await supabase
+    .from("Urls")
+    .select("id, original_url")
+    .or(`short_url.eq.${id},custom_url.eq.${id}`)
+    .single();
 
   if (shortLinkError) {
     if (shortLinkError.code === "PGRST116") {
