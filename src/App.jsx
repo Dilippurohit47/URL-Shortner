@@ -9,6 +9,7 @@ import Link from "./pages/link";
 import RedirectLink from "./pages/redirectLink";
 import UrlProvider from "./context";
 import RequireAuth from "./components/requireAuth";
+import NoLoginShort from "./pages/NoLoginShort";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: "/:id",
         element: <RedirectLink />,
-      },
+      }
     ],
   },
 ]);

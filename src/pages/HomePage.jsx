@@ -12,13 +12,15 @@ import { useNavigate } from "react-router-dom";
 const HomePage = () => {
   const [longUrl, setLongUrl] = useState();
 
-  const navigate = useNavigate()
-  const handleShorten =(e) =>{
+  const navigate = useNavigate();
+  const handleShorten = (e) => {
     e.preventDefault();
-    if(longUrl){
-navigate(`/auth?createNew=${longUrl}`)
+    if (longUrl) {
+      navigate(`/auth?createNew=${longUrl}`);
     }
-  }
+  };
+
+  const [longUrlNoLogin, setLongUrlNoLogin] = useState();
 
   return (
     <div className="flex flex-col items-center">
@@ -26,7 +28,10 @@ navigate(`/auth?createNew=${longUrl}`)
         The only URL Shortner <br /> you&rsquo;ll ever need{" "}
       </h2>
 
-      <form onSubmit={handleShorten} className="sm:h-14  flex flex-col sm:flex-row   w-full md:w-2/4 gap-2">
+      <form
+        onSubmit={handleShorten}
+        className="sm:h-14  flex flex-col sm:flex-row   w-full md:w-2/4 gap-2"
+      >
         <Input
           value={longUrl}
           type="url"
@@ -38,7 +43,8 @@ navigate(`/auth?createNew=${longUrl}`)
           Shorten!
         </Button>
       </form>
-      <Accordion type="multiple" collapsible className="w-full md:px-11">
+
+      <Accordion type="multiple" collapsible className="w-3/4 mt-8 md:px-11">
         <AccordionItem value="item-1">
           <AccordionTrigger>
             How does the Trimrr URL shortener works?

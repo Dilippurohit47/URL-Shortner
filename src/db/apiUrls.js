@@ -60,6 +60,8 @@ export async function createUrl(
   return data;
 }
 
+
+
 const parser = new UAParser();
 
 export const storeClicks = async ({ id, originalUrl }) => {
