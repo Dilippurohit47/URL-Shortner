@@ -17,6 +17,7 @@ import { urlState } from "@/context";
 import { getClicks } from "@/db/apiClicks";
 import { useEffect } from "react";
 import LinkCard from "@/components/linkCard";
+import { CreateLink } from "@/components/create-links";
 
 const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState();
@@ -52,9 +53,8 @@ const Dashboard = () => {
   const filterUrls = urls?.filter((url) =>
     url?.title?.toLowerCase().includes(searchQuery?.toLowerCase())
   );
-  console.log(urls);
   return (
-    <div className="flex flex-col gap-8 pl-20">
+    <div className="flex px-20 flex-col gap-8 pl-20">
       {(loading || loadingClicks) && <BarLoader width={"100%"} color="blue" />}
       <div className="grid grid-cols-2 gap-4">
         <Card>
@@ -76,7 +76,7 @@ const Dashboard = () => {
       </div>
       <div className="flex justify-between">
         <h1 className="text-4xl font-extrabold ">My Links</h1>
-        <Button>Create Links</Button>
+        <CreateLink />
       </div>
 
       <div className="relative">
