@@ -6,6 +6,7 @@ export async function login({ email, password }) {
     email,
     password,
   });
+  console.log("error",error)
 
   if (error) {
     throw new Error(error.message);
@@ -27,6 +28,10 @@ export async function signUp({ name, email, profile_pic, password }) {
   const { error: storageError } = await supabase.storage
     .from("profile_pic")
     .upload(fileName, profile_pic);
+
+    if(storageError){
+      return console.log(storageError)
+    }
 
   const { data, error } = await supabase.auth.signUp({
     email,

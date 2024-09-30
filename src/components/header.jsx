@@ -38,8 +38,8 @@ const Header = () => {
           {!user ? (
             <Button onClick={() => navigate("/auth")}>Login</Button>
           ) : (
-            <DropdownMenu>
-              <DropdownMenuTrigger className="w-10 rounded-full outline-none overflow-hidden">
+            <DropdownMenu className="">
+              <DropdownMenuTrigger className="rounded-full border-2 border-blue-400  outline-none overflow-hidden">
                 <Avatar>
                   <AvatarImage
                     src={user.user_metadata.profile_pic}
