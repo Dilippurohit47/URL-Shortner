@@ -12,7 +12,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BarLoader, BeatLoader } from "react-spinners";
 
 const LinkPage = () => {
-
   const navigate = useNavigate();
   const { user } = urlState();
   const { id } = useParams();
@@ -31,7 +30,6 @@ const LinkPage = () => {
 
   const { loading: loadingDelete, fn: fnDelete } = useFetch(deleteUrl, id);
 
-  
   const downloadImage = () => {
     const imageUrl = url?.qr;
     const fileName = url?.title;
@@ -51,7 +49,7 @@ const LinkPage = () => {
     fn();
   }, []);
 
-  console.log(url?.qr)
+  console.log(url?.qr);
 
   useEffect(() => {
     if (!error && loading === false) fnStats();
@@ -81,7 +79,7 @@ const LinkPage = () => {
             target="_blank"
             className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
           >
-{import.meta.env.VITE_PROD_LINK}/{link}
+            {import.meta.env.VITE_PROD_LINK}/{link}
           </a>
           <a
             href={url?.original_url}
